@@ -64,7 +64,7 @@ class ProjectsController < ApplicationController
   end
 
   def complete
-    if @project.update_attributes(completed: true)
+    if @project.update(completed: true)
       redirect_to @project,
         notice: "Congratulations, this project is complete!"
     else

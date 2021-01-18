@@ -11,7 +11,7 @@ RSpec.describe ProjectsController, type: :controller do
         sign_in @user
         get :index
         aggregate_failures do
-          expect(response).to be_success
+          expect(response).to be_successful
           expect(response).to have_http_status "200"
         end
       end
@@ -40,7 +40,7 @@ RSpec.describe ProjectsController, type: :controller do
       it "responds successfully" do
         sign_in @user
         get :show, params: { id: @project.id }
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 
@@ -231,7 +231,7 @@ RSpec.describe ProjectsController, type: :controller do
       describe "an unsuccessful completion" do
         before do
           allow_any_instance_of(Project).
-            to receive(:update_attributes).
+            to receive(:update).
             with(completed: true).
             and_return(false)
         end
